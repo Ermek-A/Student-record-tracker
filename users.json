@@ -1,0 +1,32 @@
+[
+  {
+    "username": "admin",
+    "password": "admin",
+    "role": "admin",
+    "email": "admin@xai.com"
+  },
+  {
+    "username": "calculus",
+    "password": "calculus",
+    "role": "teacher",
+    "email": "calculus@xai.com"
+  },
+  {
+    "username": "proglang",
+    "password": "proglang",
+    "role": "teacher",
+    "email": "proglang@xai.com"
+  },
+  {
+    "username": "english",
+    "password": "english",
+    "role": "teacher",
+    "email": "english@xai.com"
+  },
+  {
+    "username": "Ermek",
+    "password": "123",
+    "role": "student",
+    "email": "Ermek@gmail.com"
+  }
+]

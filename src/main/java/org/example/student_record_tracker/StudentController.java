@@ -1,4 +1,4 @@
-package org.example.studen_record_tracker;
+package org.example.student_record_tracker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,7 +57,7 @@ public class StudentController {
     @FXML
     protected void exit(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/studen_record_tracker/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/student_record_tracker/login.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setTitle("Student Record Tracker");

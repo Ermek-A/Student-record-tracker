@@ -1,4 +1,4 @@
-module org.example.studen_record_tracker {
+module org.example.student_record_tracker {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -13,7 +13,7 @@ module org.example.studen_record_tracker {
     requires json.simple;
     requires com.google.gson;
 
-    opens org.example.studen_record_tracker to javafx.fxml, com.google.gson;
+    opens org.example.student_record_tracker to javafx.fxml, com.google.gson;
 
-    exports org.example.studen_record_tracker;
+    exports org.example.student_record_tracker;
 }

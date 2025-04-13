@@ -1,4 +1,4 @@
-package org.example.studen_record_tracker;
+package org.example.student_record_tracker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,7 +59,7 @@ public class LoginController {
     @FXML
     protected void openRegistration(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/studen_record_tracker/register.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/student_record_tracker/register.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setTitle("Register");
@@ -80,8 +80,8 @@ public class LoginController {
 
     private void loadWindow(String fxml, String title, String role, String id) {
         try {
-            // Явно указываем путь к FXML
-            String fxmlPath = "/org/example/studen_record_tracker/" + fxml;
+
+            String fxmlPath = "/org/example/student_record_tracker/" + fxml;
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
             if (loader.getLocation() == null) {
                 throw new IOException("FXML file not found: " + fxmlPath);
@@ -91,7 +91,7 @@ public class LoginController {
             stage.setTitle(title);
             stage.setScene(scene);
 
-            // Инициализация контроллера
+
             if ("student".equals(role)) {
                 StudentController controller = loader.getController();
                 controller.setCurrentUser(id);
@@ -108,7 +108,7 @@ public class LoginController {
             Stage currentStage = (Stage) loginField.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
-            e.printStackTrace(); // Для дебаггинга
+            e.printStackTrace();
             showAlert("Error", "Failed to open window: " + e.getMessage());
         }
     }

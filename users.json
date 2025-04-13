@@ -52,5 +52,11 @@
     "password": "123",
     "role": "student",
     "email": "Liza@gmail.com"
+  },
+  {
+    "username": "ываы",
+    "password": "123",
+    "role": "student",
+    "email": "ываы@"
   }
 ]

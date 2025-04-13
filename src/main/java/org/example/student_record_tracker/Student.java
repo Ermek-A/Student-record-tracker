@@ -1,4 +1,4 @@
-package org.example.studen_record_tracker;
+package org.example.student_record_tracker;
 
 public class Student {
     private String name;

@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="436.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.studen_record_tracker.StudentController">
+<AnchorPane prefHeight="436.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.student_record_tracker.StudentController">
    <children>
       <AnchorPane layoutX="18.0" layoutY="114.0" prefHeight="263.0" prefWidth="374.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #acacac; -fx-border-radius: 10; -fx-border-width: 0.5;">
          <children>

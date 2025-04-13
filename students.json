@@ -1,9 +1,9 @@
 [
   {
     "name": "student",
-    "group": "MatDais",
+    "group": "ComSE",
     "email": "student@gmail.com",
-    "calculusGrade": 97,
+    "calculusGrade": 85,
     "programmingGrade": 89,
     "englishGrade": 96
   },
@@ -14,5 +14,13 @@
     "calculusGrade": 90,
     "programmingGrade": 98,
     "englishGrade": 87
+  },
+  {
+    "name": "укку",
+    "group": "ComSE",
+    "email": "ываы@",
+    "calculusGrade": 0,
+    "programmingGrade": 0,
+    "englishGrade": 0
   }
 ]

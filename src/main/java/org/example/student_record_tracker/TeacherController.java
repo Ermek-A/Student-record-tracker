@@ -1,4 +1,4 @@
-package org.example.studen_record_tracker;
+package org.example.student_record_tracker;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,7 +33,7 @@ public class TeacherController {
     @FXML
     public void initialize() {
         students = userService.loadStudents();
-        // Не вызываем refreshStudentList здесь, чтобы избежать NPE
+
     }
 
     public void setCurrentUser(String id) {
@@ -49,7 +49,7 @@ public class TeacherController {
                 titleLabel.setText("Teacher Panel (English)");
                 break;
         }
-        refreshStudentList(); // Обновляем список после установки currentUser
+        refreshStudentList();
     }
 
     @FXML
@@ -97,7 +97,7 @@ public class TeacherController {
     private void refreshStudentList() {
         studentList.getItems().clear();
         if (currentUser == null) {
-            return; // Не обновляем, если currentUser не установлен
+            return;
         }
         for (Student student : students) {
             int grade = switch (currentUser) {
@@ -121,7 +121,7 @@ public class TeacherController {
     @FXML
     protected void exit(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/studen_record_tracker/login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/student_record_tracker/login.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setTitle("Student Record Tracker");

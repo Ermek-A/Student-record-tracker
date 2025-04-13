@@ -3,6 +3,7 @@
 ## Title: Student Record Tracker
 
 ## Path to codes: src/main/java/org/example/student_record_tracker
+## Path to fxml(front-end) files: src/main/resources/org/example/student_record_tracker
 ## Description:
 
 The **Student Record Tracker** is a JavaFX-based desktop application designed to manage student academic records efficiently. It supports three user roles—**Admin**, **Teacher**, and **Student**—with distinct functionalities to streamline academic processes. Admins can manage student data and grades, Teachers assign subject-specific grades, and Students view their grades and GPA. The application ensures data persistence using JSON files and restricts inputs to English characters for consistency.

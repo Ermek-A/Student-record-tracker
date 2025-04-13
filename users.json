@@ -40,5 +40,17 @@
     "password": "123",
     "role": "student",
     "email": "student@gmail.com"
+  },
+  {
+    "username": "dana",
+    "password": "123",
+    "role": "student",
+    "email": "dana@gmail.com"
+  },
+  {
+    "username": "Liza",
+    "password": "123",
+    "role": "student",
+    "email": "Liza@gmail.com"
   }
 ]

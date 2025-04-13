@@ -3,8 +3,16 @@
     "name": "student",
     "group": "MatDais",
     "email": "student@gmail.com",
-    "calculusGrade": 0,
-    "programmingGrade": 0,
-    "englishGrade": 0
+    "calculusGrade": 97,
+    "programmingGrade": 89,
+    "englishGrade": 96
+  },
+  {
+    "name": "Liza",
+    "group": "ComCEH",
+    "email": "Liza@gmail.com",
+    "calculusGrade": 90,
+    "programmingGrade": 98,
+    "englishGrade": 87
   }
 ]

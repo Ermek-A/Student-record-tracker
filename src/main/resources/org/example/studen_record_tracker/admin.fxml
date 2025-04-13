@@ -75,5 +75,10 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
+      <Button layoutX="21.0" layoutY="497.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

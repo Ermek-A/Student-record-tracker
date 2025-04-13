@@ -1,8 +1,13 @@
 package org.example.studen_record_tracker;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AdminController {
@@ -116,6 +121,22 @@ public class AdminController {
         students.clear();
         userService.saveStudents(students);
         refreshStudentList();
+    }
+
+    @FXML
+    protected void exit(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/studen_record_tracker/login.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Student Record Tracker");
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) nameField.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            showAlert("Error", "Failed to open login window: " + e.getMessage());
+        }
     }
 
     @FXML

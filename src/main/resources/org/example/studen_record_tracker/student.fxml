@@ -1,19 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.studen_record_tracker.StudentController"
-            prefWidth="400" prefHeight="300">
-
-    <VBox alignment="CENTER" spacing="10" layoutX="50" layoutY="30" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20">
-        <Label fx:id="welcomeLabel" style="-fx-font-size: 16px;"/>
-        <Label fx:id="groupLabel"/>
-        <Label fx:id="calculusLabel"/>
-        <Label fx:id="programmingLabel"/>
-        <Label fx:id="englishLabel"/>
-        <Label fx:id="gpaLabel"/>
-    </VBox>
+<AnchorPane prefHeight="436.0" prefWidth="409.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.studen_record_tracker.StudentController">
+   <children>
+      <AnchorPane layoutX="18.0" layoutY="114.0" prefHeight="263.0" prefWidth="374.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #acacac; -fx-border-radius: 10; -fx-border-width: 0.5;">
+         <children>
+            <Label fx:id="calculusLabel" layoutX="14.0" layoutY="108.0" prefHeight="46.0" prefWidth="302.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="programmingLabel" layoutX="14.0" layoutY="54.0" prefHeight="46.0" prefWidth="321.0">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your grades:" wrappingWidth="199.39385986328125">
+               <font>
+                  <Font name="Arial" size="32.0" />
+               </font>
+            </Text>
+            <Label fx:id="gpaLabel" layoutX="14.0" layoutY="202.0" prefHeight="46.0" prefWidth="346.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="englishLabel" layoutX="14.0" layoutY="155.0" prefHeight="46.0" prefWidth="346.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label fx:id="welcomeLabel" layoutX="14.0" layoutY="14.0" prefHeight="36.0" prefWidth="375.0" style="-fx-font-size: 30px; -fx-font-family: arial;">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="groupLabel" layoutX="18.0" layoutY="50.0" prefHeight="46.0" prefWidth="314.0">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Line endX="273.49285888671875" endY="-39.20000076293945" layoutX="137.0" layoutY="96.0" startX="-138.6000213623047" startY="-39.20000076293945" stroke="#b4b4b4" strokeWidth="0.5" />
+      <Line endX="245.39996337890625" endY="62.00001525878906" layoutX="147.0" layoutY="106.0" startX="-128.99998474121094" startY="62.00001525878906" stroke="#b4b4b4" strokeWidth="0.5" />
+      <Line endX="235.39996337890625" endY="100.80000305175781" layoutX="157.0" layoutY="116.0" startX="-139.00001525878906" startY="100.80000305175781" stroke="#b4b4b4" strokeWidth="0.5" />
+      <Line endX="235.39996337890625" endY="152.0" layoutX="157.0" layoutY="116.0" startX="-138.99998474121094" startY="152.0" stroke="#b4b4b4" strokeWidth="0.5" />
+      <Line endX="235.39996337890625" endY="197.5999755859375" layoutX="157.0" layoutY="116.0" startX="-138.99998474121094" startY="197.5999755859375" stroke="#b4b4b4" strokeWidth="0.5" />
+      <Button layoutX="158.0" layoutY="390.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Exit" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

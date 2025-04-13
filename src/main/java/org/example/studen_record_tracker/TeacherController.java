@@ -28,7 +28,7 @@ public class TeacherController {
     @FXML
     public void initialize() {
         students = userService.loadStudents();
-        refreshStudentList();
+        // Не вызываем refreshStudentList здесь, чтобы избежать NPE
     }
 
     public void setCurrentUser(String id) {
@@ -44,7 +44,7 @@ public class TeacherController {
                 titleLabel.setText("Teacher Panel (English)");
                 break;
         }
-        refreshStudentList();
+        refreshStudentList(); // Обновляем список после установки currentUser
     }
 
     @FXML
@@ -91,6 +91,9 @@ public class TeacherController {
 
     private void refreshStudentList() {
         studentList.getItems().clear();
+        if (currentUser == null) {
+            return; // Не обновляем, если currentUser не установлен
+        }
         for (Student student : students) {
             int grade = switch (currentUser) {
                 case "calculus" -> student.getCalculusGrade();

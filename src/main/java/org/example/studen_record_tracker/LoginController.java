@@ -66,7 +66,7 @@ public class LoginController {
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
-            showAlert("Error", "Failed to open registration window.");
+            showAlert("Error", "Failed to open registration window: " + e.getMessage());
         }
     }
 
@@ -80,12 +80,18 @@ public class LoginController {
 
     private void loadWindow(String fxml, String title, String role, String id) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/studen_record_tracker/" + fxml));
+            // Явно указываем путь к FXML
+            String fxmlPath = "/org/example/studen_record_tracker/" + fxml;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            if (loader.getLocation() == null) {
+                throw new IOException("FXML file not found: " + fxmlPath);
+            }
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(scene);
 
+            // Инициализация контроллера
             if ("student".equals(role)) {
                 StudentController controller = loader.getController();
                 controller.setCurrentUser(id);
@@ -102,6 +108,7 @@ public class LoginController {
             Stage currentStage = (Stage) loginField.getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
+            e.printStackTrace(); // Для дебаггинга
             showAlert("Error", "Failed to open window: " + e.getMessage());
         }
     }

@@ -30,6 +30,15 @@ public class LoginController {
             return;
         }
 
+        if (!isLatin(login)) {
+            showAlert("Error", "Please write login only in English.");
+            return;
+        }
+        if (!isLatin(password)) {
+            showAlert("Error", "Please write password only in English.");
+            return;
+        }
+
         User user = UserService.authenticate(login, password);
         if (user == null) {
             showAlert("Error", "Invalid username or password.");
@@ -70,6 +79,9 @@ public class LoginController {
         }
     }
 
+    private boolean isLatin(String input) {
+        return input.matches("^[a-zA-Z0-9_]+$");
+    }
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

@@ -51,6 +51,19 @@ public class RegisterController {
             return;
         }
 
+        if (!isLatinName(name)) {
+            showAlert("Error", "Please write name only in English.");
+            return;
+        }
+        if (!isLatinEmail(email)) {
+            showAlert("Error", "Please write email only in English.");
+            return;
+        }
+        if (!isLatinPassword(password)) {
+            showAlert("Error", "Please write password only in English.");
+            return;
+        }
+
         try {
             userService.registerStudent(name, email, password, group);
             showAlert("Success", "Registration completed successfully.");
@@ -59,6 +72,17 @@ public class RegisterController {
         } catch (IllegalArgumentException e) {
             showAlert("Error", e.getMessage());
         }
+    }
+    private boolean isLatinName(String input) {
+        return input.matches("^[a-zA-Z0-9\\s]+$");
+    }
+
+    private boolean isLatinEmail(String input) {
+        return input.matches("^[a-zA-Z0-9@.\\-_]+$");
+    }
+
+    private boolean isLatinPassword(String input) {
+        return input.matches("^[a-zA-Z0-9_]+$");
     }
 
     private void showAlert(String title, String message) {

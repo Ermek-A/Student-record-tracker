@@ -1,8 +1,16 @@
 [
   {
     "name": "Ermek",
-    "group": "ComCEH",
+    "group": "ComSE",
     "email": "Ermek@gmail.com",
+    "calculusGrade": 0,
+    "programmingGrade": 0,
+    "englishGrade": 0
+  },
+  {
+    "name": "Ermek",
+    "group": "MatDais",
+    "email": "Ermek@",
     "calculusGrade": 0,
     "programmingGrade": 0,
     "englishGrade": 0

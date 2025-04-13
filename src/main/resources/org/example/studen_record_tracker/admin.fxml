@@ -10,39 +10,56 @@
 
 <AnchorPane prefHeight="544.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.studen_record_tracker.AdminController">
    <children>
-      <AnchorPane layoutX="499.0" layoutY="-1.0" prefHeight="544.0" prefWidth="258.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 2;" />
-      <ListView fx:id="studentList" layoutX="21.0" layoutY="15.0" prefHeight="374.0" prefWidth="465.0"  />
-      <TextField fx:id="nameField" layoutX="514.0" layoutY="61.0" prefHeight="25.0" prefWidth="170.0" promptText="Student Name" style="-fx-font-size: 18;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="18.0" />
-         </font>
-      </TextField>
-      <ComboBox fx:id="groupComboBox" layoutX="514.0" layoutY="202.0" prefHeight="38.0" prefWidth="170.0" promptText="Group" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10;" />
-      <TextField fx:id="emailField" layoutX="514.0" layoutY="106.0" prefHeight="25.0" prefWidth="170.0" promptText="Email" style="-fx-font-size: 18;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="17.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="passwordField" layoutX="514.0" layoutY="152.0" prefHeight="25.0" prefWidth="170.0" promptText="New Password (max 8 characters)" style="-fx-font-size: 18;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="15.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="calculusField" layoutX="514.0" layoutY="295.0" prefHeight="25.0" prefWidth="170.0" promptText="Calculus Grade" style="-fx-font-size: 18;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="programmingField" layoutX="514.0" layoutY="339.0" prefHeight="25.0" prefWidth="170.0" promptText="Programming Grade" style="-fx-font-size: 17;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="14.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="englishField" layoutX="514.0" layoutY="387.0" prefHeight="25.0" prefWidth="170.0" promptText="English Grade" style="-fx-font-size: 18;">
-         <font>
-            <Font name="AdobeHebrew-Regular" size="16.0" />
-         </font>
-      </TextField>
+      <AnchorPane layoutX="508.0" layoutY="13.0" prefHeight="544.0" prefWidth="258.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 2;">
+         <children>
+            <TextField fx:id="nameField" layoutX="24.0" layoutY="16.0" prefHeight="25.0" prefWidth="170.0" promptText="Student Name" style="-fx-font-size: 18;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="18.0" />
+               </font>
+            </TextField>
+            <ComboBox fx:id="groupComboBox" layoutX="24.0" layoutY="157.0" prefHeight="38.0" prefWidth="170.0" promptText="Group" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10;" />
+            <TextField fx:id="emailField" layoutX="24.0" layoutY="61.0" prefHeight="25.0" prefWidth="170.0" promptText="Email" style="-fx-font-size: 18;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="17.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="passwordField" layoutX="24.0" layoutY="107.0" prefHeight="25.0" prefWidth="170.0" promptText="New Password (max 8 characters)" style="-fx-font-size: 18;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="15.0" />
+               </font>
+            </TextField>
+            <Button fx:id="addButton" defaultButton="true" layoutX="28.0" layoutY="205.0" onAction="#handleAdd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="calculusField" layoutX="22.0" layoutY="303.0" prefHeight="25.0" prefWidth="170.0" promptText="Calculus Grade" style="-fx-font-size: 18;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="programmingField" layoutX="22.0" layoutY="347.0" prefHeight="25.0" prefWidth="170.0" promptText="Programming Grade" style="-fx-font-size: 17;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="14.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="englishField" layoutX="22.0" layoutY="395.0" prefHeight="25.0" prefWidth="170.0" promptText="English Grade" style="-fx-font-size: 18;">
+               <font>
+                  <Font name="AdobeHebrew-Regular" size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="updateButton" defaultButton="true" layoutX="24.0" layoutY="462.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Button>
+            <Text fill="#535353" layoutX="26.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grades (0-100)">
+               <font>
+                  <Font name="Arial" size="25.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
+      <ListView fx:id="studentList" layoutX="21.0" layoutY="15.0" prefHeight="374.0" prefWidth="465.0" />
       <Button fx:id="removeButton" layoutX="21.0" layoutY="409.0" onAction="#handleRemove" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: #f4f4f4; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Remove">
          <font>
             <Font name="Arial" size="16.0" />
@@ -53,20 +70,5 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="updateButton" defaultButton="true" layoutX="507.0" layoutY="440.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="addButton" defaultButton="true" layoutX="620.0" layoutY="440.0" onAction="#handleAdd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10;" text="Add" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="18.0" />
-         </font>
-      </Button>
-      <Text fill="#535353" layoutX="518.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grades (0-100)">
-         <font>
-            <Font name="Arial" size="25.0" />
-         </font>
-      </Text>
    </children>
 </AnchorPane>

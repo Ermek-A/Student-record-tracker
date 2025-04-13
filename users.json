@@ -28,5 +28,11 @@
     "password": "123",
     "role": "student",
     "email": "Ermek@gmail.com"
+  },
+  {
+    "username": "Ermek",
+    "password": "123",
+    "role": "student",
+    "email": "Ermek@"
   }
 ]

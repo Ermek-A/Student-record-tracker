@@ -16,7 +16,7 @@
 ![student](photos/studentpanel.jpg)
 
 ## Also you can sign in like teacher and change students grades:
-![teacher](photos/teachersigin.jpg)
+![teacher](photos/teachersignin.jpg)
 ![teacher](photos/teacherpanel.jpg)
-![teacher](photos/teacherudategrade.jpg)
+![teacher](photos/teacherupdategrade.jpg)
 

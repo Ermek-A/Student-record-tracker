@@ -3,4 +3,4 @@
 
 
 ## You can sign in like Admin, Student, Teacher. Firstly we sign in like admin:
-![Admin](photos/login admin.jpg)
+![Admin](photos/login%admin.jpg)

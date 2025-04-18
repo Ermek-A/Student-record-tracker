@@ -12,6 +12,7 @@ module org.example.student_record_tracker {
     requires com.almasb.fxgl.all;
     requires json.simple;
     requires com.google.gson;
+    requires java.desktop;
 
     opens org.example.student_record_tracker to javafx.fxml, com.google.gson;
 

@@ -11,26 +11,14 @@ import java.io.IOException;
 
 public class StudentController {
 
-    @FXML
-    private Label welcomeLabel;
-
-    @FXML
-    private Label groupLabel;
-
-    @FXML
-    private Label calculusLabel;
-
-    @FXML
-    private Label programmingLabel;
-
-    @FXML
-    private Label englishLabel;
-
-    @FXML
-    private Label gpaLabel;
+    @FXML private Label welcomeLabel;
+    @FXML private Label groupLabel;
+    @FXML private Label calculusLabel;
+    @FXML private Label programmingLabel;
+    @FXML private Label englishLabel;
+    @FXML private Label gpaLabel;
 
     private String currentUser;
-
     private final UserService userService = new UserService();
 
     public void setCurrentUser(String email) {
@@ -51,9 +39,10 @@ public class StudentController {
             programmingLabel.setText("Programming: " + student.getProgrammingGrade());
             englishLabel.setText("English: " + student.getEnglishGrade());
             gpaLabel.setText(String.format("GPA: %.2f (4.0 scale: %.2f)",
-                    student.calculateHundredPointGPA(), student.calculateFourPointGPA()));
+                    student.calculateHundredPointGPA(), student.getGpa()));
         }
     }
+
     @FXML
     protected void exit(ActionEvent event) {
         try {
@@ -69,6 +58,7 @@ public class StudentController {
             showAlert("Error", "Failed to open login window: " + e.getMessage());
         }
     }
+
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

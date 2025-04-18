@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,7 +11,7 @@
 
 <AnchorPane prefHeight="544.0" prefWidth="741.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.student_record_tracker.AdminController">
    <children>
-      <AnchorPane layoutX="508.0" layoutY="13.0" prefHeight="544.0" prefWidth="258.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 2;">
+      <AnchorPane layoutX="653.0" layoutY="14.0" prefHeight="544.0" prefWidth="278.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 2;">
          <children>
             <TextField fx:id="nameField" layoutX="24.0" layoutY="16.0" prefHeight="25.0" prefWidth="170.0" promptText="Student Name" style="-fx-font-size: 18;">
                <font>
@@ -58,13 +59,24 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Text>
-            <Button fx:id="updateButton2" defaultButton="true" layoutX="142.0" layoutY="205.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
+            <Button defaultButton="true" layoutX="142.0" layoutY="205.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
-         </children></AnchorPane>
-      <ListView fx:id="studentList" layoutX="21.0" layoutY="15.0" prefHeight="374.0" prefWidth="465.0" />
+         </children>
+      </AnchorPane>
+      <TableView fx:id="studentTable" layoutX="18.0" layoutY="15.0" prefHeight="374.0" prefWidth="621.0" style="-fx-font-family: Arial; -fx-font-size: 15px; -fx-selection-bar-text: #464646; -fx-selection-bar: #cfcfcf;">
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="100.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5; -fx-selection-bar: #ADD8E6;" text="Name" />
+            <TableColumn fx:id="emailColumn" prefWidth="115.20001983642578" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Email" />
+            <TableColumn fx:id="groupColumn" prefWidth="80.79998779296875" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Group" />
+            <TableColumn fx:id="calculusColumn" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Calculus" />
+            <TableColumn fx:id="programmingColumn" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="PL" />
+            <TableColumn fx:id="englishColumn" prefWidth="87.99996948242188" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="English" />
+            <TableColumn fx:id="gpaColumn" prefWidth="92.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="GPA" />
+         </columns>
+      </TableView>
       <Button fx:id="removeButton" layoutX="21.0" layoutY="409.0" onAction="#handleRemove" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: #f4f4f4; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Remove">
          <font>
             <Font name="Arial" size="16.0" />

@@ -1,26 +1,38 @@
 [
   {
     "name": "student",
-    "group": "ComSE",
-    "email": "student@gmail.com",
-    "calculusGrade": 85,
-    "programmingGrade": 89,
-    "englishGrade": 96
-  },
-  {
-    "name": "Liza",
     "group": "ComCEH",
-    "email": "Liza@gmail.com",
-    "calculusGrade": 90,
-    "programmingGrade": 98,
-    "englishGrade": 87
+    "email": "student@gmail.com",
+    "calculusGrade": 100,
+    "programmingGrade": 87,
+    "englishGrade": 100,
+    "gpa": 3.8266666666666667
   },
   {
     "name": "Ermek",
-    "group": "ComCEH",
+    "group": "ComSE",
     "email": "Ermek@gmail.com",
-    "calculusGrade": 100,
-    "programmingGrade": 0,
-    "englishGrade": 0
+    "calculusGrade": 98,
+    "programmingGrade": 89,
+    "englishGrade": 100,
+    "gpa": 3.8266666666666667
+  },
+  {
+    "name": "Liza",
+    "group": "ComSE",
+    "email": "Liza@gmail.com",
+    "calculusGrade": 67,
+    "programmingGrade": 98,
+    "englishGrade": 98,
+    "gpa": 3.506666666666667
+  },
+  {
+    "name": "Lana",
+    "group": "MatDais",
+    "email": "Lana@gmail.com",
+    "calculusGrade": 88,
+    "programmingGrade": 89,
+    "englishGrade": 88,
+    "gpa": 3.533333333333333
   }
 ]

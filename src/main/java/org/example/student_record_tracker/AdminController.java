@@ -1,5 +1,9 @@
 package org.example.student_record_tracker;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,69 +12,57 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class AdminController {
 
-    @FXML
-    private ListView<String> studentList;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private ComboBox<String> groupComboBox;
-
-    @FXML
-    private TextField emailField;
-
-    @FXML
-    private TextField passwordField;
-
-    @FXML
-    private TextField calculusField;
-
-    @FXML
-    private TextField programmingField;
-
-    @FXML
-    private TextField englishField;
-
-    @FXML
-    private Button addButton;
-
-    @FXML
-    private Button removeButton;
-
-    @FXML
-    private Button clearButton;
-
-    @FXML
-    private Button updateButton;
+    @FXML private TableView<Student> studentTable;
+    @FXML private TableColumn<Student, String> nameColumn;
+    @FXML private TableColumn<Student, String> emailColumn;
+    @FXML private TableColumn<Student, String> groupColumn;
+    @FXML private TableColumn<Student, Number> calculusColumn;
+    @FXML private TableColumn<Student, Number> programmingColumn;
+    @FXML private TableColumn<Student, Number> englishColumn;
+    @FXML private TableColumn<Student, String> gpaColumn;
+    @FXML private TextField nameField;
+    @FXML private ComboBox<String> groupComboBox;
+    @FXML private TextField emailField;
+    @FXML private TextField passwordField;
+    @FXML private TextField calculusField;
+    @FXML private TextField programmingField;
+    @FXML private TextField englishField;
+    @FXML private Button addButton;
+    @FXML private Button removeButton;
+    @FXML private Button clearButton;
+    @FXML private Button updateButton;
 
     private String role;
-
     private String currentUser;
-
     private final UserService userService = new UserService();
-
-    private List<Student> students;
+    private ObservableList<Student> students;
 
     @FXML
     public void initialize() {
-        students = userService.loadStudents();
+        students = FXCollections.observableArrayList(userService.loadStudents());
         groupComboBox.getItems().addAll("ComCEH", "ComSE", "MatDais");
-        refreshStudentList();
+
+        // Настройка колонок
+        nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        emailColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+        groupColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGroup()));
+        calculusColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getCalculusGrade()));
+        programmingColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getProgrammingGrade()));
+        englishColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getEnglishGrade()));
+        gpaColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.format("%.2f", cellData.getValue().getGpa())));
+
+        studentTable.setItems(students);
     }
 
     public void setRole(String role) {
         this.role = role;
-        refreshStudentList();
     }
 
     public void setCurrentUser(String id) {
         this.currentUser = id;
-        refreshStudentList();
     }
 
     @FXML
@@ -101,18 +93,16 @@ public class AdminController {
         }
 
         userService.registerStudent(name, email, password, group);
-        students = userService.loadStudents();
-        refreshStudentList();
+        students.setAll(userService.loadStudents());
         clearFields();
     }
 
     @FXML
     private void handleRemove() {
-        int index = studentList.getSelectionModel().getSelectedIndex();
-        if (index >= 0) {
-            students.remove(index);
+        Student selected = studentTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            students.remove(selected);
             userService.saveStudents(students);
-            refreshStudentList();
         }
     }
 
@@ -120,34 +110,16 @@ public class AdminController {
     private void handleClear() {
         students.clear();
         userService.saveStudents(students);
-        refreshStudentList();
-    }
-
-    @FXML
-    protected void exit(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/student_record_tracker/login.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = new Stage();
-            stage.setTitle("Student Record Tracker");
-            stage.setScene(scene);
-            stage.show();
-            Stage currentStage = (Stage) nameField.getScene().getWindow();
-            currentStage.close();
-        } catch (IOException e) {
-            showAlert("Error", "Failed to open login window: " + e.getMessage());
-        }
     }
 
     @FXML
     private void handleUpdate() {
-        int index = studentList.getSelectionModel().getSelectedIndex();
-        if (index < 0) {
+        Student selected = studentTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
             showAlert("Error", "Please select a student.");
             return;
         }
 
-        Student selected = students.get(index);
         String name = nameField.getText().trim();
         String group = groupComboBox.getValue();
         String email = emailField.getText().trim();
@@ -156,12 +128,8 @@ public class AdminController {
         String programmingText = programmingField.getText().trim();
         String englishText = englishField.getText().trim();
 
-        if (!name.isEmpty()) {
-            selected.setName(name);
-        }
-        if (group != null) {
-            selected.setGroup(group);
-        }
+        if (!name.isEmpty()) selected.setName(name);
+        if (group != null) selected.setGroup(group);
         if (!email.isEmpty()) {
             if (!email.contains("@")) {
                 showAlert("Error", "Please enter a valid email address.");
@@ -217,21 +185,24 @@ public class AdminController {
             }
         }
 
-        students.set(index, selected);
         userService.saveStudents(students);
-        refreshStudentList();
+        studentTable.refresh();
         clearFields();
     }
 
-    private void refreshStudentList() {
-        studentList.getItems().clear();
-        if ("admin".equals(role)) {
-            for (Student student : students) {
-                studentList.getItems().add(String.format("%s - %s - %s Calc: %d, Prog: %d, Eng: %d, GPA: %.2f ( %.1f)",
-                        student.getName(), student.getGroup(), student.getEmail(),
-                        student.getCalculusGrade(), student.getProgrammingGrade(), student.getEnglishGrade(),
-                        student.calculateHundredPointGPA(), student.calculateFourPointGPA()));
-            }
+    @FXML
+    protected void exit(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/student_record_tracker/login.fxml"));
+            Scene scene = new Scene(loader.load());
+            Stage stage = new Stage();
+            stage.setTitle("Student Record Tracker");
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) nameField.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            showAlert("Error", "Failed to open login window: " + e.getMessage());
         }
     }
 

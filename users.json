@@ -28,5 +28,23 @@
     "password": "123",
     "role": "student",
     "email": "Ermek@gmail.com"
+  },
+  {
+    "username": "Lana",
+    "password": "111",
+    "role": "student",
+    "email": "Lana@gmail.com"
+  },
+  {
+    "username": "S",
+    "password": "123",
+    "role": "student",
+    "email": "S@12"
+  },
+  {
+    "username": "kaka",
+    "password": "123",
+    "role": "student",
+    "email": "kaka@"
   }
 ]

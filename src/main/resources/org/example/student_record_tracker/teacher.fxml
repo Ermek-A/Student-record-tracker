@@ -2,7 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -10,7 +11,7 @@
 
 <AnchorPane prefHeight="400" prefWidth="600" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.student_record_tracker.TeacherController">
    <children>
-      <AnchorPane layoutX="432.0" layoutY="100.0" prefHeight="224.0" prefWidth="174.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 0.5;">
+      <AnchorPane layoutX="422.0" layoutY="100.0" prefHeight="224.0" prefWidth="174.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 0.5;">
          <children>
             <TextField fx:id="gradeField" layoutX="14.0" layoutY="60.0" prefHeight="51.0" prefWidth="90.0" promptText="Grade (0-100)" />
             <Button fx:id="updateButton" defaultButton="true" layoutX="14.0" layoutY="158.0" onAction="#handleUpdate" prefHeight="51.0" prefWidth="140.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update Grade">
@@ -25,7 +26,13 @@
             <Font name="AdobeHebrew-Regular" size="12.0" />
          </font>
       </Label>
-      <ListView fx:id="studentList" layoutX="7.0" layoutY="100.0" prefHeight="224.0" prefWidth="411.0" />
+      <TableView fx:id="studentTable" layoutX="7.0" layoutY="100.0" prefHeight="224.0" prefWidth="399.0" style="-fx-font-family: Arial; -fx-font-size: 15px; -fx-selection-bar-text: #464646; -fx-selection-bar: #cfcfcf;">
+         <columns>
+            <TableColumn fx:id="nameColumn" prefWidth="150.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Name" />
+            <TableColumn fx:id="emailColumn" prefWidth="150.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Email" />
+            <TableColumn fx:id="gradeColumn" prefWidth="109.59996337890624" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Grade" />
+         </columns>
+      </TableView>
       <Text fill="#2b2b2b" layoutX="7.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student list:" wrappingWidth="140.0759735107422">
          <font>
             <Font name="AdobeHebrew-Regular" size="24.0" />

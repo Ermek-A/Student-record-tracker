@@ -7,6 +7,7 @@ public class Student {
     private int calculusGrade;
     private int programmingGrade;
     private int englishGrade;
+    private double gpa;
 
     public Student(String name, String group, String email) {
         this.name = name;
@@ -15,54 +16,62 @@ public class Student {
         this.calculusGrade = 0;
         this.programmingGrade = 0;
         this.englishGrade = 0;
+        this.gpa = calculateFourPointGPA();
     }
 
     public String getName() {
         return name;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public int getCalculusGrade() {
-        return calculusGrade;
-    }
-
-    public int getProgrammingGrade() {
-        return programmingGrade;
-    }
-
-    public int getEnglishGrade() {
-        return englishGrade;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public void setGroup(String group) {
         this.group = group;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public int getCalculusGrade() {
+        return calculusGrade;
+    }
+
     public void setCalculusGrade(int grade) {
         this.calculusGrade = grade;
+        this.gpa = calculateFourPointGPA();
+    }
+
+    public int getProgrammingGrade() {
+        return programmingGrade;
     }
 
     public void setProgrammingGrade(int grade) {
         this.programmingGrade = grade;
+        this.gpa = calculateFourPointGPA();
+    }
+
+    public int getEnglishGrade() {
+        return englishGrade;
     }
 
     public void setEnglishGrade(int grade) {
         this.englishGrade = grade;
+        this.gpa = calculateFourPointGPA();
+    }
+
+    public double getGpa() {
+        return gpa;
     }
 
     public double calculateHundredPointGPA() {

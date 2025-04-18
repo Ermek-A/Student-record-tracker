@@ -1,5 +1,9 @@
 package org.example.student_record_tracker;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,32 +12,38 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
 public class TeacherController {
 
-    @FXML
-    private ListView<String> studentList;
-
-    @FXML
-    private TextField gradeField;
-
-    @FXML
-    private Button updateButton;
-
-    @FXML
-    private Label titleLabel;
+    @FXML private TableView<Student> studentTable;
+    @FXML private TableColumn<Student, String> nameColumn;
+    @FXML private TableColumn<Student, String> emailColumn;
+    @FXML private TableColumn<Student, Number> gradeColumn;
+    @FXML private TextField gradeField;
+    @FXML private Button updateButton;
+    @FXML private Label titleLabel;
 
     private String currentUser;
-
     private final UserService userService = new UserService();
-
-    private List<Student> students;
+    private ObservableList<Student> students;
 
     @FXML
     public void initialize() {
-        students = userService.loadStudents();
+        students = FXCollections.observableArrayList(userService.loadStudents());
 
+        // Настройка колонок
+        nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
+        emailColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+        gradeColumn.setCellValueFactory(cellData -> {
+            switch (currentUser) {
+                case "calculus": return new SimpleIntegerProperty(cellData.getValue().getCalculusGrade());
+                case "proglang": return new SimpleIntegerProperty(cellData.getValue().getProgrammingGrade());
+                case "english": return new SimpleIntegerProperty(cellData.getValue().getEnglishGrade());
+                default: return new SimpleIntegerProperty(0);
+            }
+        });
+
+        studentTable.setItems(students);
     }
 
     public void setCurrentUser(String id) {
@@ -41,26 +51,28 @@ public class TeacherController {
         switch (id) {
             case "calculus":
                 titleLabel.setText("Teacher Panel (Calculus)");
+                gradeColumn.setText("Calculus Grade");
                 break;
             case "proglang":
                 titleLabel.setText("Teacher Panel (Programming)");
+                gradeColumn.setText("Programming Grade");
                 break;
             case "english":
                 titleLabel.setText("Teacher Panel (English)");
+                gradeColumn.setText("English Grade");
                 break;
         }
-        refreshStudentList();
+        studentTable.refresh();
     }
 
     @FXML
     private void handleUpdate() {
-        int index = studentList.getSelectionModel().getSelectedIndex();
-        if (index < 0) {
+        Student selected = studentTable.getSelectionModel().getSelectedItem();
+        if (selected == null) {
             showAlert("Error", "Please select a student.");
             return;
         }
 
-        Student selected = students.get(index);
         String gradeText = gradeField.getText().trim();
         if (gradeText.isEmpty()) {
             showAlert("Error", "Please enter a grade.");
@@ -87,37 +99,13 @@ public class TeacherController {
             }
 
             userService.saveStudents(students);
-            refreshStudentList();
+            studentTable.refresh();
             gradeField.clear();
         } catch (NumberFormatException e) {
             showAlert("Error", "Grade must be a valid number.");
         }
     }
 
-    private void refreshStudentList() {
-        studentList.getItems().clear();
-        if (currentUser == null) {
-            return;
-        }
-        for (Student student : students) {
-            int grade = switch (currentUser) {
-                case "calculus" -> student.getCalculusGrade();
-                case "proglang" -> student.getProgrammingGrade();
-                case "english" -> student.getEnglishGrade();
-                default -> 0;
-            };
-            studentList.getItems().add(String.format("%s - %s (Grade: %d)",
-                    student.getName(), student.getEmail(), grade));
-        }
-    }
-
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
     @FXML
     protected void exit(ActionEvent event) {
         try {
@@ -132,5 +120,13 @@ public class TeacherController {
         } catch (IOException e) {
             showAlert("Error", "Failed to open login window: " + e.getMessage());
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

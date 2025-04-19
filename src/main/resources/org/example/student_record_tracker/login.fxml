@@ -11,17 +11,17 @@
    <children>
       <AnchorPane layoutX="84.0" layoutY="52.0" prefHeight="354.0" prefWidth="314.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-border-color: #a4a4a4; -fx-border-width: 0.5; -fx-border-radius: 10;">
          <children>
-            <Button defaultButton="true" layoutX="44.0" layoutY="211.0" onAction="#handleSignIn" prefHeight="45.0" prefWidth="225.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10;" text="🔒 Sign In" textFill="WHITE">
+            <Button defaultButton="true" layoutX="44.0" layoutY="211.0" onAction="#handleSignIn" prefHeight="45.0" prefWidth="225.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10; -fx-cursor: hand;" text="🔒 Sign In" textFill="WHITE">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="104.0" layoutY="266.0" onAction="#openRegistration" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: white;" text="Log in">
+            <Button layoutX="104.0" layoutY="266.0" onAction="#openRegistration" prefHeight="39.0" prefWidth="109.0" style="-fx-background-color: white; -fx-cursor: hand;" text="Log in">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Button>
-            <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="146.0" prefHeight="40.0" prefWidth="225.0" promptText="Password (max 8 characters)" style="-fx-font-family: Adobe Hebrew; -fx-font-size: 16px;">
+            <PasswordField fx:id="passwordField" layoutX="46.0" layoutY="146.0" prefHeight="40.0" prefWidth="225.0" promptText="Password (min 6 characters)" style="-fx-font-family: Adobe Hebrew; -fx-font-size: 16px;">
                <font>
                   <Font name="AdobeHebrew-Regular" size="16.0" />
                </font>

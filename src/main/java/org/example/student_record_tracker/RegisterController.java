@@ -1,9 +1,13 @@
 package org.example.student_record_tracker;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+
+import com.nulabinc.zxcvbn.Zxcvbn;
+import com.nulabinc.zxcvbn.Strength;
 
 public class RegisterController {
 
@@ -19,8 +23,6 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    private Label messageLabel;
 
     private final UserService userService = new UserService();
 
@@ -36,6 +38,9 @@ public class RegisterController {
         String group = groupComboBox.getValue();
         String password = passwordField.getText().trim();
 
+        Zxcvbn passwordCheck = new Zxcvbn();
+        Strength strength = passwordCheck.measure(password);
+
         if (name.isEmpty() || email.isEmpty() || group == null || password.isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
             return;
@@ -46,8 +51,12 @@ public class RegisterController {
             return;
         }
 
-        if (password.length() > 8) {
-            showAlert("Error", "Password must not exceed 8 characters.");
+        if (password.length() < 6) {
+            showAlert("Error", "Your password must be 6 or more characters long.");
+            return;
+        }
+        if (strength.getScore() < 2) {
+            showAlert("Error", "Weak password! Please choose a stronger password. Hint: " + strength.getFeedback().getWarning());
             return;
         }
 

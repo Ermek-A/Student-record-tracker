@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+
+
 import java.io.IOException;
 
 public class LoginController {
@@ -17,8 +19,7 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
-    @FXML
-    private Label messageLabel;
+
 
     @FXML
     protected void handleSignIn(ActionEvent event) {

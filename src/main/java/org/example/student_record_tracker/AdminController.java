@@ -11,6 +11,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import com.nulabinc.zxcvbn.Zxcvbn;
+import com.nulabinc.zxcvbn.Strength;
+
 import java.io.IOException;
 
 public class AdminController {
@@ -30,10 +33,7 @@ public class AdminController {
     @FXML private TextField calculusField;
     @FXML private TextField programmingField;
     @FXML private TextField englishField;
-    @FXML private Button addButton;
-    @FXML private Button removeButton;
-    @FXML private Button clearButton;
-    @FXML private Button updateButton;
+
 
     private String role;
     private String currentUser;
@@ -45,7 +45,7 @@ public class AdminController {
         students = FXCollections.observableArrayList(userService.loadStudents());
         groupComboBox.getItems().addAll("ComCEH", "ComSE", "MatDais");
 
-        // Настройка колонок
+
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         emailColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
         groupColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGroup()));
@@ -72,6 +72,9 @@ public class AdminController {
         String email = emailField.getText().trim();
         String password = passwordField.getText().trim();
 
+        Zxcvbn passwordCheck = new Zxcvbn();
+        Strength strength = passwordCheck.measure(password);
+
         if (name.isEmpty() || group == null || email.isEmpty() || password.isEmpty()) {
             showAlert("Error", "Please fill in all fields.");
             return;
@@ -82,8 +85,13 @@ public class AdminController {
             return;
         }
 
-        if (password.length() > 8) {
-            showAlert("Error", "Password must not exceed 8 characters.");
+        if (password.length() < 6) {
+            showAlert("Error", "Your password must be 6 or more characters long.");
+            return;
+        }
+
+        if (strength.getScore() < 2) {
+            showAlert("Error", "Weak password! Please choose a stronger password. Hint: " + strength.getFeedback().getWarning());
             return;
         }
 
@@ -101,14 +109,20 @@ public class AdminController {
     private void handleRemove() {
         Student selected = studentTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
+            String email = selected.getEmail();
+
             students.remove(selected);
             userService.saveStudents(students);
+            userService.deleteUserByEmail(email);
         }
     }
 
     @FXML
     private void handleClear() {
+        students.forEach(student -> userService.deleteUserByEmail(student.getEmail()));
+
         students.clear();
+
         userService.saveStudents(students);
     }
 
@@ -120,6 +134,8 @@ public class AdminController {
             return;
         }
 
+
+
         String name = nameField.getText().trim();
         String group = groupComboBox.getValue();
         String email = emailField.getText().trim();
@@ -127,6 +143,8 @@ public class AdminController {
         String calculusText = calculusField.getText().trim();
         String programmingText = programmingField.getText().trim();
         String englishText = englishField.getText().trim();
+
+
 
         if (!name.isEmpty()) selected.setName(name);
         if (group != null) selected.setGroup(group);
@@ -138,6 +156,17 @@ public class AdminController {
             selected.setEmail(email);
         }
         if (!password.isEmpty()) {
+            Zxcvbn passwordCheck = new Zxcvbn();
+            Strength strength = passwordCheck.measure(password);
+            if (password.length() < 6) {
+                showAlert("Error", "Your password must be 6 or more characters long.");
+                return;
+            }
+            if (strength.getScore() < 2) {
+                showAlert("Error", "Weak password! Please choose a stronger password. Hint: " + strength.getFeedback().getWarning());
+                return;
+            }
+
             try {
                 userService.updateStudentPassword(selected.getEmail(), password);
             } catch (IllegalArgumentException e) {
@@ -145,6 +174,10 @@ public class AdminController {
                 return;
             }
         }
+
+
+
+
         if (!calculusText.isEmpty()) {
             try {
                 int grade = Integer.parseInt(calculusText);

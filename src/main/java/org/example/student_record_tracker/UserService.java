@@ -4,10 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import com.nulabinc.zxcvbn.Zxcvbn;
+import com.nulabinc.zxcvbn.Strength;
+
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserService {
 
@@ -52,6 +56,16 @@ public class UserService {
             throw new IllegalArgumentException("This email or username is already taken.");
         }
 
+
+        Zxcvbn passwordCheck = new Zxcvbn();
+        Strength strength = passwordCheck.measure(password);
+        if (password.length() < 6) {
+            throw new IllegalArgumentException("Your password must be 6 or more characters long.");
+        }
+        if (strength.getScore() < 2) {
+            throw new IllegalArgumentException("Weak password! Please choose a stronger password. Hint: " + strength.getFeedback().getWarning());
+        }
+
         String username = email.split("@")[0];
         users.add(new User(username, password, "student", email));
         saveUsers(users);
@@ -91,6 +105,23 @@ public class UserService {
         } catch (IOException e) {
             throw new RuntimeException("Failed to save students.");
         }
+
+        List<User> users = loadUsers();
+        List<String> studentEmails = students.stream()
+                .map(Student::getEmail)
+                .collect(Collectors.toList());
+        users = users.stream()
+                .filter(user -> !user.getRole().equals("student") || studentEmails.contains(user.getEmail()))
+                .collect(Collectors.toList());
+        saveUsers(users);
+    }
+
+    public void deleteUserByEmail(String email){
+        List<User> users = loadUsers();
+        users = users.stream()
+                .filter(user -> !user.getEmail().equals(email) || !user.getRole().equals("student"))
+                .collect(Collectors.toList());
+        saveUsers(users);
     }
 
     public void updateStudentPassword(String email, String newPassword) {
@@ -101,8 +132,13 @@ public class UserService {
                 .orElse(null);
 
         if (user != null) {
-            if (newPassword.length() > 8) {
-                throw new IllegalArgumentException("Password must not exceed 8 characters.");
+            Zxcvbn passwordCheck = new Zxcvbn();
+            Strength strength = passwordCheck.measure(newPassword);
+            if (newPassword.length() < 6) {
+                throw new IllegalArgumentException("Your password must be 6 or more characters long.");
+            }
+            if (strength.getScore() < 2) {
+                throw new IllegalArgumentException("Weak password! Please choose a stronger password. Hint: " + strength.getFeedback().getWarning());
             }
             user.setPassword(newPassword);
             saveUsers(users);

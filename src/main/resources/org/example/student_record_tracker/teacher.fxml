@@ -13,8 +13,8 @@
    <children>
       <AnchorPane layoutX="422.0" layoutY="100.0" prefHeight="224.0" prefWidth="174.0" style="-fx-background-color: white; -fx-border-color: #cfcfcf; -fx-border-width: 0.5;">
          <children>
-            <TextField fx:id="gradeField" layoutX="14.0" layoutY="60.0" prefHeight="51.0" prefWidth="90.0" promptText="Grade (0-100)" />
-            <Button fx:id="updateButton" defaultButton="true" layoutX="14.0" layoutY="158.0" onAction="#handleUpdate" prefHeight="51.0" prefWidth="140.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update Grade">
+            <TextField fx:id="gradeField" layoutX="14.0" layoutY="60.0" prefHeight="51.0" prefWidth="102.0" promptText="Grade (0-100)" style="-fx-font-size: 14px;" />
+            <Button defaultButton="true" layoutX="14.0" layoutY="158.0" onAction="#handleUpdate" prefHeight="51.0" prefWidth="140.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Update Grade">
                <font>
                   <Font name="Arial" size="16.0" />
                </font>
@@ -38,7 +38,7 @@
             <Font name="AdobeHebrew-Regular" size="24.0" />
          </font>
       </Text>
-      <Button layoutX="260.0" layoutY="347.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Exit" textFill="WHITE">
+      <Button layoutX="260.0" layoutY="347.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Exit" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

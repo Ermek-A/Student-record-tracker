@@ -13,6 +13,7 @@ module org.example.student_record_tracker {
     requires json.simple;
     requires com.google.gson;
     requires java.desktop;
+    requires zxcvbn;
 
     opens org.example.student_record_tracker to javafx.fxml, com.google.gson;
 

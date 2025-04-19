@@ -53,7 +53,7 @@
       <Line endX="235.39996337890625" endY="100.80000305175781" layoutX="157.0" layoutY="116.0" startX="-139.00001525878906" startY="100.80000305175781" stroke="#b4b4b4" strokeWidth="0.5" />
       <Line endX="235.39996337890625" endY="152.0" layoutX="157.0" layoutY="116.0" startX="-138.99998474121094" startY="152.0" stroke="#b4b4b4" strokeWidth="0.5" />
       <Line endX="235.39996337890625" endY="197.5999755859375" layoutX="157.0" layoutY="116.0" startX="-138.99998474121094" startY="197.5999755859375" stroke="#b4b4b4" strokeWidth="0.5" />
-      <Button layoutX="158.0" layoutY="390.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Exit" textFill="WHITE">
+      <Button layoutX="158.0" layoutY="390.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Exit" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

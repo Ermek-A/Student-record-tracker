@@ -18,7 +18,7 @@
                   <Font name="AdobeHebrew-Regular" size="18.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="groupComboBox" layoutX="24.0" layoutY="157.0" prefHeight="38.0" prefWidth="170.0" promptText="Group" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10;" />
+            <ComboBox fx:id="groupComboBox" layoutX="24.0" layoutY="157.0" prefHeight="38.0" prefWidth="170.0" promptText="Group" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-cursor: hand;" />
             <TextField fx:id="emailField" layoutX="24.0" layoutY="61.0" prefHeight="25.0" prefWidth="170.0" promptText="Email" style="-fx-font-size: 18;">
                <font>
                   <Font name="AdobeHebrew-Regular" size="17.0" />
@@ -29,7 +29,7 @@
                   <Font name="AdobeHebrew-Regular" size="15.0" />
                </font>
             </TextField>
-            <Button fx:id="addButton" defaultButton="true" layoutX="28.0" layoutY="205.0" onAction="#handleAdd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10;" text="Add" textFill="WHITE">
+            <Button fx:id="addButton" defaultButton="true" layoutX="28.0" layoutY="205.0" onAction="#handleAdd" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #4090ff; -fx-background-radius: 10; -fx-cursor: hand;" text="Add" textFill="WHITE">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font name="AdobeHebrew-Regular" size="16.0" />
                </font>
             </TextField>
-            <Button fx:id="updateButton" defaultButton="true" layoutX="24.0" layoutY="462.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
+            <Button fx:id="updateButton" defaultButton="true" layoutX="24.0" layoutY="462.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Update">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
@@ -59,14 +59,14 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </Text>
-            <Button defaultButton="true" layoutX="142.0" layoutY="205.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Update">
+            <Button defaultButton="true" layoutX="142.0" layoutY="205.0" onAction="#handleUpdate" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #f4f4f4; -fx-background-radius: 10; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Update">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="studentTable" layoutX="18.0" layoutY="15.0" prefHeight="374.0" prefWidth="621.0" style="-fx-font-family: Arial; -fx-font-size: 15px; -fx-selection-bar-text: #464646; -fx-selection-bar: #cfcfcf;">
+      <TableView fx:id="studentTable" layoutX="18.0" layoutY="15.0" prefHeight="374.0" prefWidth="616.0" style="-fx-font-family: Arial; -fx-font-size: 15px; -fx-selection-bar-text: #464646; -fx-selection-bar: #cfcfcf;">
          <columns>
             <TableColumn fx:id="nameColumn" prefWidth="100.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5; -fx-selection-bar: #ADD8E6;" text="Name" />
             <TableColumn fx:id="emailColumn" prefWidth="115.20001983642578" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="Email" />
@@ -77,17 +77,17 @@
             <TableColumn fx:id="gpaColumn" prefWidth="92.0" style="-fx-border-color: #c9c8c8; -fx-border-width: 0.5;" text="GPA" />
          </columns>
       </TableView>
-      <Button fx:id="removeButton" layoutX="21.0" layoutY="409.0" onAction="#handleRemove" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: #f4f4f4; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Remove">
+      <Button fx:id="removeButton" layoutX="21.0" layoutY="409.0" onAction="#handleRemove" prefHeight="31.0" prefWidth="206.0" style="-fx-background-radius: 10; -fx-background-color: #f4f4f4; -fx-border-color: #c9c8c8; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Remove">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="clearButton" layoutX="262.0" layoutY="409.0" onAction="#handleClear" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Clear All" textFill="WHITE">
+      <Button fx:id="clearButton" layoutX="262.0" layoutY="409.0" onAction="#handleClear" prefHeight="31.0" prefWidth="206.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Clear All" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="21.0" layoutY="497.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5;" text="Exit" textFill="WHITE">
+      <Button layoutX="21.0" layoutY="497.0" onAction="#exit" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #ff3b3b; -fx-background-radius: 10; -fx-border-color: red; -fx-border-radius: 10; -fx-border-width: 0.5; -fx-cursor: hand;" text="Exit" textFill="WHITE">
          <font>
             <Font name="Arial" size="15.0" />
          </font>

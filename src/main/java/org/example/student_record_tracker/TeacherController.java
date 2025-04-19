@@ -20,7 +20,7 @@ public class TeacherController {
     @FXML private TableColumn<Student, String> emailColumn;
     @FXML private TableColumn<Student, Number> gradeColumn;
     @FXML private TextField gradeField;
-    @FXML private Button updateButton;
+
     @FXML private Label titleLabel;
 
     private String currentUser;

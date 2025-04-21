@@ -11,39 +11,34 @@ The **Student Record Tracker** is a JavaFX-based desktop application designed to
 **Student Name, Surname**: [Ermek Asangulov]
 
 ---
+## Overview
 
-## Project Overview
+The purpose of the Student Record Tracker is to provide a centralized system for managing student information and grades. The application supports three user roles:
 
-### Purpose:
+- **Administrator**: Manages student records (add, update, delete, clear) and can assign grades.
+- **Teacher**: Assigns grades for their specific subject (Calculus, Programming, or English).
+- **Student**: Views their grades and calculated Grade Point Average (GPA).
 
-The purpose of the **Student Record Tracker** is to provide an intuitive platform for academic institutions to manage student records, facilitate grade assignments, and enable students to monitor their academic performance. It simplifies administrative tasks, enhances teacher-student interaction, and ensures reliable data storage without requiring a complex database.
+Key features include:
 
----
+- **User Authentication**: Secure login and registration for students, with password strength validation using the zxcvbn library.
+- **Student Management**: Administrators can add, update, or remove student records, including personal details and grades.
+- **Grade Management**: Teachers can assign grades for their subject, and administrators can manage grades for all subjects.
+- **GPA Calculation**: Automatically calculates a student’s GPA on a 4.0 scale based on their grades.
+- **Persistent Storage**: Uses JSON files (`users.json` for user credentials and `students.json` for student records) to store data.
+- **User Interface**: Built with JavaFX and FXML for a responsive and intuitive experience.
 
-### Functionality:
-
-- **Admin Role**: Add, update, or remove student records, including personal details and grades for *Calculus*, *Programming*, and *English*.
-- **Teacher Role**: Assign and update grades for a specific subject (*Calculus*, *Programming*, or *English*) for all students.
-- **Student Role**: View personal grades and calculated GPA (*100-point and 4.0 scales*).
-- **General Features**:
-  - User authentication
-  - Student registration
-  - Logout functionality via an **"Exit"** button
-  - Input validation to enforce **English-only** characters for login and registration
-
-- **Data Storage**:
-  - Persistent storage of user credentials and student records in `users.json` and `students.json`.
-
----
+The application starts with a login screen, allowing users to sign in or register (for students). Based on the user’s role, it redirects to the appropriate dashboard (admin, teacher, or student), where role-specific functionalities are available.
 
 ## Objectives
 
-The **Student Record Tracker** aims to achieve the following goals:
+The primary goals of the Student Record Tracker are:
 
-- **Efficient Record Management**: Enable administrators to centrally manage student data, including personal information and academic grades, in a user-friendly interface.
-- **Role-Based Functionality**: Provide distinct, secure interfaces for Admins, Teachers, and Students to perform their specific tasks effectively.
-- **Accurate Grade Tracking**: Allow Teachers to assign valid grades (0–100) with input validation, ensuring reliable academic records.
-- **Student Access**: Empower Students to view their grades and GPA, supporting academic transparency and planning.
-- **Data Reliability**: Use JSON files for persistent, lightweight data storage, ensuring data is preserved between sessions.
-- **Input Consistency**: Restrict login and registration inputs to English characters to prevent encoding issues and maintain system integrity.
-- **Usability**: Incorporate intuitive navigation, including a logout feature ("Exit" button), to enhance the user experience across all roles.
+1. **Efficient Data Management**: To provide a system that simplifies the creation, modification, and deletion of student records, reducing manual effort for administrators.
+2. **Role-Based Access**: To implement distinct functionalities for administrators, teachers, and students, ensuring that each user can only access features relevant to their role.
+3. **Accurate Grade Tracking**: To enable teachers to assign grades and students to view their performance, with automatic GPA calculation for academic evaluation.
+4. **Data Persistence**: To ensure that user and student data is saved reliably in JSON files, maintaining consistency across application sessions.
+5. **Secure Authentication**: To incorporate user registration and login with password strength checks, enhancing the security of user accounts.
+6. **User-Friendly Interface**: To design an intuitive and visually appealing interface using JavaFX, making the application accessible to users with varying technical expertise.
+
+By achieving these objectives, the project aims to deliver a robust and practical tool for academic institutions to manage student records and grades efficiently.

@@ -8,15 +8,14 @@
 ## In admin panel you can remove, clear all, add, update students:
 ![Admin](images/adminpanel.jpg)
 
-## After exit you can click on "log in" and create account like student:
-![login](images/login.jpg)
+## After exit you can click on "sign up" and create account like student:
+![login](images/register.jpg)
 ![loginexample](images/loginexample.jpg)
 
 ## After you can sign in with new account like student and see your grades:
 ![student](images/studentpanel.jpg)
 
 ## Also you can sign in like teacher and change students grades:
-![teacher](images/teachersignin.jpg)
 ![teacher](images/teacherpanel.jpg)
-![teacher](images/teacherupdategrade.jpg)
+
 

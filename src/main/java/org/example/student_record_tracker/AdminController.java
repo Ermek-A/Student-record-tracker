@@ -42,6 +42,11 @@ public class AdminController {
 
     @FXML
     public void initialize() {
+
+        for (TableColumn<Student, ?> column : studentTable.getColumns()) {
+            column.setResizable(false);
+        }
+
         students = FXCollections.observableArrayList(userService.loadStudents());
         groupComboBox.getItems().addAll("ComCEH", "ComSE", "MatDais");
 

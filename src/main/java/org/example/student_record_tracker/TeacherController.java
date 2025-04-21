@@ -31,7 +31,11 @@ public class TeacherController {
     public void initialize() {
         students = FXCollections.observableArrayList(userService.loadStudents());
 
-        // Настройка колонок
+        for (TableColumn<Student, ?> column : studentTable.getColumns()) {
+            column.setResizable(false);
+        }
+
+
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         emailColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
         gradeColumn.setCellValueFactory(cellData -> {
